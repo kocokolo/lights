@@ -1,7 +1,7 @@
 var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
 if(!isChrome){
-	alert("俺不支持非chrome浏览器");
-	return;
+	alert("俺不支持非chrome浏览器呢，么么哒");
+
 }
 
 /**
