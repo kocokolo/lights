@@ -21,10 +21,10 @@ LIGHTS.GUI.prototype = {
 
 		LIGHTS.GUI.instance = this;
 
+
 	},
 
 	
-
 	fade: function( alpha ) {
 
 		
@@ -253,7 +253,21 @@ LIGHTS.Loader.prototype = {
 			this.onLoadTweetsError();
 		}
 		else {
- 
+
+			try {
+
+				var script = document.createElement( 'script' );
+				script.type = 'text/javascript';
+				script.src = LIGHTS.Config.tweetsFeed;
+				document.body.appendChild( script );
+
+				this.timeout = setTimeout( 'LIGHTS.Loader.prototype.instance.onLoadTweetsError()', 5000 );
+			}
+			catch( error ) {
+
+				console.error( "Error: loadTweets", error );
+				this.onLoadTweetsError();
+			}
 		}
 	},
 
@@ -4705,8 +4719,8 @@ LIGHTS.Terrain.prototype = {
 
                 // Visible?
                 /*
-                    // sin (s – t) = sin s cos t – cos s sin t
-                    cos (s – t) = cos s cos t + sin s sin t
+                    // sin (s 鈥� t) = sin s cos t 鈥� cos s sin t
+                    cos (s 鈥� t) = cos s cos t + sin s sin t
                  */
                 if( r > 1 )
                     tileVisible = (cos * Math.cos( angle ) + sin * Math.sin( angle )) < -0.5; // Far cull angle delta cos
@@ -12156,4 +12170,3 @@ LIGHTS.TextureUtils.getGradientColors = function( gradient ) {
 
 	return colors;
 };
-
