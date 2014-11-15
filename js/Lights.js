@@ -1,3 +1,9 @@
+var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+if(!isChrome){
+	alert("俺不支持非chrome浏览器");
+	return;
+}
+
 /**
  * Created by JetBrains WebStorm.
  * User: C4RL05
